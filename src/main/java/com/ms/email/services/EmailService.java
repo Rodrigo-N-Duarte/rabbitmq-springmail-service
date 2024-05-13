@@ -3,7 +3,7 @@ package com.ms.email.services;
 import com.ms.email.enums.StatusEmail;
 import com.ms.email.models.EmailModel;
 import com.ms.email.repositories.EmailRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Data;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -12,12 +12,11 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 @Service
+@Data
 public class EmailService {
-    @Autowired
-    EmailRepository emailRepository;
+    final EmailRepository emailRepository;
 
-    @Autowired
-    private JavaMailSender emailSender;
+    private final JavaMailSender emailSender;
 
     public EmailModel sendEmail(EmailModel emailModel) {
         emailModel.setSendDate(LocalDateTime.now());

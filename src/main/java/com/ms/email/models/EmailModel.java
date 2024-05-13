@@ -3,11 +3,9 @@ package com.ms.email.models;
 import com.ms.email.enums.StatusEmail;
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 
 @Data
 @Entity
@@ -25,5 +23,6 @@ public class EmailModel implements Serializable {
     @Column(columnDefinition = "Text")
     private String text;
     private LocalDateTime sendDate;
+    @Enumerated(EnumType.STRING)
     private StatusEmail statusEmail;
 }
